@@ -1,45 +1,66 @@
 import React from "react";
-
+import { FaBars } from "react-icons/fa";
 const Navbar = () => {
+  const navBar = [
+    {
+      id: 1,
+      listName: "home",
+      url: "/",
+    },
+    {
+      id: 2,
+      listName: "about",
+      url: "/",
+    },
+    {
+      id: 3,
+      listName: "departments",
+      url: "/",
+    },
+    {
+      id: 4,
+      listName: "pages",
+      url: "/",
+    },
+    {
+      id: 5,
+      listName: "blog",
+      url: "/",
+    },
+    {
+      id: 6,
+      listName: "contacts",
+      url: "/",
+    },
+  ];
   return (
     <header className="py-6">
       <nav className="container flex items-center justify-between">
         <div className="logo">
           <img src="images/icons/logo.svg" alt="Docmic" />
         </div>
-        <ul className="flex items-center justify-between gap-5">
-          <li>
-            <a href="/" className="navList-items active">
-              home
-            </a>
-          </li>
-          <li>
-            <a href="/" className="navList-items">
-              about
-            </a>
-          </li>
-          <li>
-            <a href="/" className="navList-items">
-              departments
-            </a>
-          </li>
-          <li>
-            <a href="/" className="navList-items">
-              pages
-            </a>
-          </li>
-          <li>
-            <a href="/" className="navList-items">
-              blog
-            </a>
-          </li>
-          <li>
-            <a href="/" className="navList-items">
-              contacts
-            </a>
-          </li>
-        </ul>
-        <button className="btn">free consultion</button>
+        <div className="hidden lg:block">
+          <ul className="flex items-center justify-between gap-5">
+            {navBar.map((nav) => (
+              <li key={nav.id}>
+                <a
+                  href={nav.url}
+                  className={
+                    nav.listName === "home"
+                      ? "navList-items active"
+                      : "navList-items"
+                  }
+                >
+                  {nav.listName}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <button className="btn lg:block hidden">free consultion</button>
+        <button className="text-dark lg:hidden block">
+          <FaBars size="24" />
+        </button>
       </nav>
     </header>
   );
